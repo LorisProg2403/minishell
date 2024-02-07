@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaume <marvin@42lausanne.ch>              +#+  +:+       +#+        */
+/*   By: lgaume <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 11:56:34 by lgaume            #+#    #+#             */
-/*   Updated: 2024/01/24 11:56:36 by lgaume           ###   ########.fr       */
+/*   Created: 2024/02/07 03:19:30 by lgaume            #+#    #+#             */
+/*   Updated: 2024/02/07 03:19:34 by lgaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-int main(void)
+int	handle_input(void)
 {
-	while (1)
+	char	*input;
+
+	input = readline("MINISHELL : ");
+	if (!input)
+		return (0);
+	if (*input)
+		add_history(input);
+	if (!ft_strcmp(input, "exit"))
 	{
-		int i = handle_input();
-		if (i)
-		{
-			ft_printf(BRED"\nYou exit the minishell...\n"RESET);
-			return (0);
-		}
+		free(input);
+		return (1);
 	}
+	else
+		ft_printf("You entered: %s\n\n", input);
+	free(input);
+	return (0);
 }
