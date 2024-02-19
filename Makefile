@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = MINISHELL
+NAME = minishell
 
 CC 		= gcc -g
 FLAGS 	= -Wall -Wextra -Werror
@@ -31,7 +31,7 @@ MAGENTA = \033[1;35m
 RESET 	= \033[0m
 
 SRC 	= minishell
-SRC		+= input
+SRC		+= input env/env utils tokens/tokens tokens/tokens_input
 SRCS 	= $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC)))
 OBJ 	= $(patsubst $(SRC_PATH)%.c,$(OBJ_PATH)%.o,$(SRCS))
 
@@ -55,6 +55,10 @@ $(OBJ_PATH)%.o: 		$(SRC_PATH)%.c
 						@mkdir -p $(@D)
 						@$(CC) $(FLAGS) $(READLINE_INC) -I$(INC) -c $< -o $@
 
+norm:
+						@clear
+						@norminette ./src/* ./inc/*
+
 clean:
 						@$(RM) $(OBJ)
 
@@ -64,4 +68,4 @@ fclean:					clean
 
 re:						fclean all
 
-.PHONY:					all clean fclean re libft libft_clean
+.PHONY:					all clean fclean re libft libft_clean norm

@@ -12,11 +12,15 @@
 
 #include "../inc/minishell.h"
 
-int	handle_input(void)
+int	handle_input(t_mini *mini)
 {
 	char	*input;
+	char	*path_terminal;
 
-	input = readline("MINISHELL : ");
+	path_terminal = ft_strjoin(RED, mini->path);
+	path_terminal = ft_strjoin(path_terminal, "\n");
+	path_terminal = ft_strjoin(path_terminal, RESET);
+	input = readline(path_terminal);
 	if (!input)
 		return (0);
 	if (*input)
@@ -28,6 +32,7 @@ int	handle_input(void)
 	}
 	else
 		ft_printf("You entered: %s\n\n", input);
+	init_tokens(mini, input);
 	free(input);
 	return (0);
 }
