@@ -25,13 +25,11 @@ typedef struct s_mini
 	char	*path;
 }	t_mini;
 
-
-//typedef struct t_token t_token;
-//typedef struct s_token {
-//	int type;
-//	char *command;
-//	char *options;
-//	char *agrs;
-//	t_token next;
-//} t_token;
+typedef struct s_token {
+	int				type;
+	char			*command;
+	char 			*options;
+	char			*agrs;
+	struct s_token	*next;
+} t_token;
 #endif

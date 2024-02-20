@@ -12,7 +12,7 @@
 
 #include "../../inc/minishell.h"
 
-void	init_tokens_mini(t_mini *mini, char *command, char *del)
+void	add_token(t_mini *mini, char *command, char *del)
 {
 	(void)mini;
 	(void)command;
