@@ -12,14 +12,22 @@
 
 #include "../inc/minishell.h"
 
+char	*make_path(char *path)
+{
+	path = ft_strjoin(CYAN, path);
+	path = ft_strjoin(path, "\n");
+	path = ft_strjoin(path, BRED);
+	path = ft_strjoin(path, "❯ ");
+	path = ft_strjoin(path, RESET);
+	return (path);
+}
+
 int	handle_input(t_mini *mini)
 {
 	char	*input;
 	char	*path_terminal;
 
-	path_terminal = ft_strjoin(RED, mini->path);
-	path_terminal = ft_strjoin(path_terminal, "\n");
-	path_terminal = ft_strjoin(path_terminal, RESET);
+	path_terminal = make_path(mini->path);
 	input = readline(path_terminal);
 	if (!input)
 		return (0);
