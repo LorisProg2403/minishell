@@ -49,23 +49,24 @@ int	is_delimiter(char *p, char **found_delim)
 	return (0);
 }
 
-void	split_cmds_2(char **input, char	**start, char *segment, char **delim)
+void	split_cmds_2(char **input, char	**start, t_mini *mini, char **delim)
 {
 	size_t	len;
+	char	*sgt;
 
 	len = (*input) - (*start);
-	segment = (char *)malloc(len + 1);
-	ft_strncpy(segment, *start, len);
-	segment[len] = '\0';
-	printf("Segment: |%s|, Delimiter: '%s'\n", segment, *delim);
-	free(segment);
+	mini->tmp.segment = (char *)malloc(len + 1);
+	ft_strncpy(mini->tmp.segment, *start, len);
+	mini->tmp.segment[len] = '\0';
+	sgt = ft_strtrim(mini->tmp.segment, " ");
+	add_token(mini, sgt, ft_strtrim(*delim, " "));
+	free(mini->tmp.segment);
 	*input += ft_strlen(*delim);
 	*start = *input;
 }
 
-void	split_commands(t_mini *mini, char *input, char	*segment)
+void	split_commands(t_mini *mini, char *input)
 {
-	(void)mini;
 	char	*start;
 	int		in_sgl_quote;
 	int		in_dbl_quote;
@@ -80,19 +81,20 @@ void	split_commands(t_mini *mini, char *input, char	*segment)
 		else if (*input == '\'' && !in_dbl_quote)
 			in_sgl_quote = !in_sgl_quote;
 		if (!in_sgl_quote && !in_dbl_quote && is_delimiter(input, &found_delim))
-			split_cmds_2(&input, &start, segment, &found_delim);
+			split_cmds_2(&input, &start, mini, &found_delim);
 		else
 			++input;
 	}
 	if (start)
 	{
-		segment = ft_strdup(start);
-		printf("Segment: |%s|, Delimiter: None\n", segment);
-		free(segment);
+		mini->tmp.segment = ft_strdup(start);
+		add_token(mini, ft_strtrim(mini->tmp.segment, " "), NULL);
+		free(mini->tmp.segment);
 	}
 }
 
 void	init_tokens(t_mini *mini, char *input)
 {
-	split_commands(mini, input, "");
+	mini->tmp.segment = "";
+	split_commands(mini, input);
 }

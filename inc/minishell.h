@@ -27,12 +27,14 @@ void init_envs(t_mini *mini, char **env);
 // TOKENS DIRECTORY
 // tokens_input.c
 void	init_tokens(t_mini *mini, char *input);
+void	add_token(t_mini *mini, char *command, char *del);
 // tokens.c
 void	init_tokens_mini(t_mini *mini, char *command, char *del);
 
 // SRCS DIRECTORY
 // utils.c
 char	*ft_strncpy(char *dest, const char *src, unsigned int n);
+char	*ft_strcat(char *dest, char *src);
 // input.c
 int	handle_input(t_mini *mini);
 

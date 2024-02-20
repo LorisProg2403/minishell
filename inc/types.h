@@ -19,8 +19,16 @@ typedef struct s_env
 	char	*value;
 }	t_env;
 
+typedef struct s_tmp
+{
+	char	*segment;
+	int		i;
+	int		start;
+}	t_tmp;
+
 typedef struct s_mini
 {
+	t_tmp	tmp;
 	t_env	*envs;
 	char	*path;
 }	t_mini;
@@ -29,7 +37,7 @@ typedef struct s_token {
 	int				type;
 	char			*command;
 	char 			*options;
-	char			*agrs;
+	char			*args;
 	struct s_token	*next;
 } t_token;
 #endif
