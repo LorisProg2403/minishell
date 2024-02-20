@@ -39,8 +39,7 @@ int	handle_input(t_mini *mini)
 		return (1);
 	}
 	else
-		ft_printf("You entered: %s\n\n", input);
-	init_tokens(mini, input);
+		init_tokens(mini, input);
 	free(input);
 	return (0);
 }
