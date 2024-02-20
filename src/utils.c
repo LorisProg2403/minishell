@@ -47,3 +47,28 @@ char *ft_strcat(char *dest, char *src)
 	dest[i + j] = '\0';
 	return (dest);
 }
+
+t_token	*lst_last_token(t_token *lst)
+{
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+void	add_back_token(t_token **lst, t_token *n)
+{
+	t_token	*last;
+
+	if (lst)
+	{
+		if (*lst)
+		{
+			last = lst_last_token(*lst);
+			last->next = n;
+		}
+		else
+			*lst = n;
+	}
+}

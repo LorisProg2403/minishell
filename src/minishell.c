@@ -24,6 +24,7 @@ void	init_minishell(t_mini *mini, int ac, char **av, char **env)
 		exit(ERROR);
 	}
 	mini->path = ft_strdup(path);
+	mini->token = NULL;
 }
 
 int main(int ac, char **av, char **env)

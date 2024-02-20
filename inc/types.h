@@ -26,18 +26,20 @@ typedef struct s_tmp
 	int		start;
 }	t_tmp;
 
-typedef struct s_mini
-{
-	t_tmp	tmp;
-	t_env	*envs;
-	char	*path;
-}	t_mini;
-
 typedef struct s_token {
 	int				type;
 	char			*command;
 	char 			*options;
 	char			*args;
 	struct s_token	*next;
+	struct s_token	*prev;
 } t_token;
+
+typedef struct s_mini
+{
+	t_token	*token;
+	t_tmp	tmp;
+	t_env	*envs;
+	char	*path;
+}	t_mini;
 #endif

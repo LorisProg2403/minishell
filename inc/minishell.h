@@ -35,6 +35,7 @@ void	init_tokens_mini(t_mini *mini, char *command, char *del);
 // utils.c
 char	*ft_strncpy(char *dest, const char *src, unsigned int n);
 char	*ft_strcat(char *dest, char *src);
+void	add_back_token(t_token **lst, t_token *n);
 // input.c
 int	handle_input(t_mini *mini);
 

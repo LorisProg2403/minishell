@@ -75,19 +75,47 @@ void	prepare_token(t_mini *mini, t_token *tkn, char *cmd)
 	prepare_token_3(tkn);
 }
 
+int	get_type(char *del)
+{
+	if (del == NULL)
+		return (DEL_NULL);
+	else if (!ft_strcmp(del, ">>"))
+		return (DEL_2ARW_R);
+	else if (!ft_strcmp(del, "<<"))
+		return (DEL_2ARW_L);
+	else if (!ft_strcmp(del, ">"))
+		return (DEL_2ARW_L);
+	else if (!ft_strcmp(del, "<"))
+		return (DEL_2ARW_L);
+	else if (!ft_strcmp(del, "&&"))
+		return (DEL_2ARW_L);
+	else if (!ft_strcmp(del, "&"))
+		return (DEL_2ARW_L);
+	else if (!ft_strcmp(del, "||"))
+		return (DEL_2ARW_L);
+	else if (!ft_strcmp(del, "|"))
+		return (DEL_2ARW_L);
+	else
+		return (DEL_UNDEFINED);
+}
+
 void	add_token(t_mini *mini, char *command, char *del)
 {
-	t_token	token;
+	t_token	*token;
 
-	(void)mini;
-	(void)command;
-	(void)del;
-	printf("Segment: |%s|, Delimiter: '%s'\n", command, del);
-	token.command = calloc(256, sizeof(char));
-	token.options = calloc(256, sizeof(char));
-	token.args = calloc(1024, sizeof(char));
-	prepare_token(mini, &token, command);
-	printf("Fonction: %s\n", token.command);
-	printf("Options: %s\n", token.options);
-	printf("Arguments: %s\n", token.args);
+	token = malloc(sizeof(t_token));
+	token->command = ft_calloc(256, sizeof(char));
+	token->options = ft_calloc(256, sizeof(char));
+	token->args = ft_calloc(1024, sizeof(char));
+	token->next = NULL;
+	token->prev = NULL;
+	token->type = get_type(del);
+	prepare_token(mini, token, command);
+	if (!mini->token)
+	{
+		mini->token = malloc(sizeof(t_token));
+		mini->token = token;
+	}
+	else
+		add_back_token(&mini->token, token);
 }

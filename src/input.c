@@ -22,6 +22,13 @@ char	*make_path(char *path)
 	return (path);
 }
 
+void	handle_command(t_mini *mini, char *input)
+{
+	//if ()
+	// todo: faire ici les test (mini->token->type) pour savoir quelles commandes appeler
+	// y a deja les fichiers des commandes, faut juste les remplir
+}
+
 int	handle_input(t_mini *mini)
 {
 	char	*input;
@@ -39,7 +46,11 @@ int	handle_input(t_mini *mini)
 		return (1);
 	}
 	else
+	{
 		init_tokens(mini, input);
+		handle_command(mini, input);
+	}
+
 	free(input);
 	return (0);
 }
