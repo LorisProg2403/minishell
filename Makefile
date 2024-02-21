@@ -30,8 +30,10 @@ CYAN 	=	\033[1;36m
 MAGENTA = \033[1;35m
 RESET 	= \033[0m
 
-SRC 	= minishell
-SRC		+= input env/env utils lst_utils tokens/tokens tokens/tokens_input
+SRC 	= minishell input utils lst_utils
+SRC		+= commands/cd commands/echo commands/env commands/export commands/pwd commands/unset
+SRC		+= env/env
+SRC		+= tokens/tokens tokens/tokens_input
 SRCS 	= $(addprefix $(SRC_PATH), $(addsuffix .c, $(SRC)))
 OBJ 	= $(patsubst $(SRC_PATH)%.c,$(OBJ_PATH)%.o,$(SRCS))
 

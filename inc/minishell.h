@@ -18,11 +18,15 @@
 # include "constants.h"
 # include <readline/readline.h>
 # include <readline/history.h>
+#include <fcntl.h>
 
+
+//COMMANDS DIR
+void	echo(t_mini *mini, t_token *token);
 
 // ENV DIRECTORY
 // env.c
-void init_envs(t_mini *mini, char **env);
+void 	init_envs(t_mini *mini, char **env);
 
 // TOKENS DIRECTORY
 // tokens_input.c
@@ -43,6 +47,6 @@ void	lst_tkn_delone(t_token *lst);
 void	lst_tkn_clear(t_token **lst);
 
 // input.c
-int	handle_input(t_mini *mini);
+int		handle_input(t_mini *mini);
 
 #endif

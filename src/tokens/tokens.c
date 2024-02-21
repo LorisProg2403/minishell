@@ -84,17 +84,15 @@ int	get_type(char *del)
 	else if (!ft_strcmp(del, "<<"))
 		return (DEL_2ARW_L);
 	else if (!ft_strcmp(del, ">"))
-		return (DEL_2ARW_L);
+		return (DEL_ARW_R);
 	else if (!ft_strcmp(del, "<"))
-		return (DEL_2ARW_L);
+		return (DEL_ARW_L);
 	else if (!ft_strcmp(del, "&&"))
-		return (DEL_2ARW_L);
-	else if (!ft_strcmp(del, "&"))
-		return (DEL_2ARW_L);
+		return (DEL_2AND);
 	else if (!ft_strcmp(del, "||"))
-		return (DEL_2ARW_L);
+		return (DEL_2PIPE);
 	else if (!ft_strcmp(del, "|"))
-		return (DEL_2ARW_L);
+		return (DEL_PIPE);
 	else
 		return (DEL_UNDEFINED);
 }
