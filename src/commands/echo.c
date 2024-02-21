@@ -74,7 +74,7 @@ void	echo(t_mini *mini, t_token *token)
 		overwrite_echo(mini, token, next);
 	else if (token->type == DEL_2ARW_R)
 		append_echo(mini, token, next);
-	while (next->type != DEL_NULL)
+	while (next && next->type != DEL_NULL)
 	{
 		if (next->type == DEL_ARW_R)
 			overwrite_echo(mini, token, next->next);
