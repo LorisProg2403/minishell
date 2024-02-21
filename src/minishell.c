@@ -35,6 +35,7 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		int i = handle_input(&mini);
+		printf("funciton 1: %s\n", mini.token->command);
 		if (i)
 		{
 			ft_printf(BRED"\nYou exit the minishell...\n"RESET);

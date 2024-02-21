@@ -24,6 +24,8 @@ char	*make_path(char *path)
 
 void	handle_command(t_mini *mini, char *input)
 {
+	(void)mini;
+	(void)input;
 	//if ()
 	// todo: faire ici les test (mini->token->type) pour savoir quelles commandes appeler
 	// y a deja les fichiers des commandes, faut juste les remplir
@@ -47,6 +49,7 @@ int	handle_input(t_mini *mini)
 	}
 	else
 	{
+		lst_tkn_clear(&(mini->token));
 		init_tokens(mini, input);
 		handle_command(mini, input);
 	}
