@@ -23,6 +23,7 @@
 
 //COMMANDS DIR
 void	echo(t_mini *mini, t_token *token);
+void	pwd(t_mini *mini);
 
 // ENV DIRECTORY
 // env.c

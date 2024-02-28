@@ -26,6 +26,8 @@ void	handle_command(t_mini *mini, t_token *token)
 {
 	if (!ft_strcmp("echo", token->command))
 		echo(mini, token);
+	else if (!ft_strcmp("pwd", token->command))
+		pwd(mini);
 	//if ()
 	// todo: faire ici les test (mini->token->type) pour savoir quelles commandes appeler
 	// y a deja les fichiers des commandes, faut juste les remplir

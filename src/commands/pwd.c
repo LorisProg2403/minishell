@@ -14,5 +14,13 @@
 
 void	pwd(t_mini *mini)
 {
+	char	*pwd;
+	char 	buff[1024];
+
 	(void)mini;
+	pwd = getcwd(buff, sizeof(buff));
+	if (pwd != NULL)
+		printf("%s\n", pwd);
+	else
+		perror("pwd error");
 }
